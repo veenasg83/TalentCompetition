@@ -29,7 +29,12 @@ export default class ManageJob extends React.Component {
                 showUnexpired: true
             },
             totalPages: 1,
-            activeIndex: ""
+            activeIndex: "",
+            currentPage: 0,
+            limit: 2,
+            paginatedData :[],
+            firstoffset : 0,
+            lastOffset :2
         }
         this.loadData = this.loadData.bind(this);
         this.init = this.init.bind(this);
@@ -86,7 +91,7 @@ export default class ManageJob extends React.Component {
                     this.setState({
                         loadJobs: jobList
                     })
-                 
+                    this.prepareTable(this.state.firstoffset, this.state.lastOffset);
                 }
                 console.log("ajax", res);
                 console.log("ajax", jobList);
@@ -114,14 +119,42 @@ export default class ManageJob extends React.Component {
         });
     }
 
+    onPageChanged = (event) => {
+        console.log("onpagechange",event.target);
+    }
+
+    prepareTable = (firstIndex, lastIndex) => {
+        let tableData = [];
+        tableData = this.state.loadJobs.slice(firstIndex, lastIndex);
+        this.setState({
+            paginatedData: tableData
+        })
+    }
+
+    handleChange = (event) => {
+       
+        let current = 0;
+        current = event.target.getAttribute("value");
+        this.setState({
+            currentPage: current
+        });
+        const lastIndex = current * this.state.limit;
+        const firstIndex = lastIndex - this.state.limit;
+        this.prepareTable(firstIndex, lastIndex);
+        
+        console.log("inside", current);
+        console.log("inside", event.target.getAttribute("value"));
+    
+    }
+
     render() {
-        const { loadJobs } = this.state
+        const { loadJobs, paginatedData,limit } = this.state
         return (
             <BodyWrapper reload={this.init} loaderData={this.state.loaderData}>
 
                 <div className="ui container">
                     <Card.Group>
-                        {loadJobs.map((item) =>
+                        {paginatedData.map((item) =>
                             <React.Fragment>
                                 <Card>
                                 <Card.Content>    
@@ -150,6 +183,12 @@ export default class ManageJob extends React.Component {
                         )}
                     </Card.Group>
                 </div>
+                <Pagination 
+                    defaultActivePage={1} 
+                    totalPages={Math.ceil(loadJobs.length/limit)}
+                    onClick={(event, data) => this.handleChange(event)}
+                    onPageChange={(event, data) => this.onPageChanged(event)}
+                />
             </BodyWrapper>
         )
     }
