@@ -64,7 +64,7 @@ export default class EmployeeProfile extends React.Component {
                 let employerData = null;
                 if (res.employer) {
                     employerData = res.employer
-                    //console.log("employerData", employerData)
+                    console.log("employerData", employerData)
                 }
                 this.updateWithoutSave(employerData)
             }.bind(this),

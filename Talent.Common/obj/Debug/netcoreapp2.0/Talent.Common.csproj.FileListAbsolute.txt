@@ -25,3 +25,12 @@ C:\Talent-Competition\Talent\Talent.Common\obj\Debug\netcoreapp2.0\Talent.Common
 C:\Talent-Competition\Talent\Talent.Common\obj\Debug\netcoreapp2.0\Talent.Common.AssemblyInfo.cs
 C:\Talent-Competition\Talent\Talent.Common\obj\Debug\netcoreapp2.0\Talent.Common.dll
 C:\Talent-Competition\Talent\Talent.Common\obj\Debug\netcoreapp2.0\Talent.Common.pdb
+D:\Veena\IndustryConnect\Practical\CompetitionTask\Talent.Common\bin\Debug\netcoreapp2.0\Talent.Common.deps.json
+D:\Veena\IndustryConnect\Practical\CompetitionTask\Talent.Common\bin\Debug\netcoreapp2.0\Talent.Common.dll
+D:\Veena\IndustryConnect\Practical\CompetitionTask\Talent.Common\bin\Debug\netcoreapp2.0\Talent.Common.pdb
+D:\Veena\IndustryConnect\Practical\CompetitionTask\Talent.Common\obj\Debug\netcoreapp2.0\Talent.Common.csprojAssemblyReference.cache
+D:\Veena\IndustryConnect\Practical\CompetitionTask\Talent.Common\obj\Debug\netcoreapp2.0\Talent.Common.csproj.CoreCompileInputs.cache
+D:\Veena\IndustryConnect\Practical\CompetitionTask\Talent.Common\obj\Debug\netcoreapp2.0\Talent.Common.AssemblyInfoInputs.cache
+D:\Veena\IndustryConnect\Practical\CompetitionTask\Talent.Common\obj\Debug\netcoreapp2.0\Talent.Common.AssemblyInfo.cs
+D:\Veena\IndustryConnect\Practical\CompetitionTask\Talent.Common\obj\Debug\netcoreapp2.0\Talent.Common.dll
+D:\Veena\IndustryConnect\Practical\CompetitionTask\Talent.Common\obj\Debug\netcoreapp2.0\Talent.Common.pdb
