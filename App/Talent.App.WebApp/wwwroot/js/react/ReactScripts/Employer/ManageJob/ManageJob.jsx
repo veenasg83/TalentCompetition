@@ -5,7 +5,8 @@ import LoggedInBanner from '../../Layout/Banner/LoggedInBanner.jsx';
 import { LoggedInNavigation } from '../../Layout/LoggedInNavigation.jsx';
 import { JobSummaryCard } from './JobSummaryCard.jsx';
 import { BodyWrapper, loaderData } from '../../Layout/BodyWrapper.jsx';
-import { Pagination, Icon, Dropdown, Checkbox, Accordion, Form, Segment, Card, Button, Label} from 'semantic-ui-react';
+import { Pagination, Icon, Dropdown, Checkbox, Accordion, Form, Segment, Card, Button, Label } from 'semantic-ui-react';
+
 
 
 const sortOptions = [
@@ -169,14 +170,16 @@ export default class ManageJob extends React.Component {
 
     }
 
-    closeJob = () => {
+    closeJob(id) {
         var cookies = Cookies.get('talentAuthToken');
+        console.log("id",id);
         $.ajax({
             url: 'http://localhost:51689/listing/listing/closeJob',
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'
             },
+            data: JSON.stringify(id),
             type: "POST",
             contentType: "Application/json",
             dataType: "JSON",
@@ -215,7 +218,7 @@ export default class ManageJob extends React.Component {
                             defaultValue={sortOptions[0].value}
                         />
                     </span>
-                    <div>
+                    <div className = "cardGroup">
                     <Card.Group>
                         {paginatedData.map((item) =>
                             <React.Fragment>
@@ -235,7 +238,7 @@ export default class ManageJob extends React.Component {
                                         <div>
                                             <Button negative floated='left' size='mini'>Expired</Button>
                                             <Button.Group compact floated='right'>
-                                                    <Button icon='close' content = "Close" size='mini' basic color='blue'  onClick={this.closeJob}/>                                         
+                                                    <Button icon='close' content = "Close" size='mini' basic color='blue'  onClick={()=>this.closeJob(item.id)}/>                                         
                                                     <Button icon='edit' content= "Edit" size='mini' size='mini'basic color='blue'/>                                            
                                                     <Button icon='copy' content="Copy" size='mini' size='mini' basic color='blue' />                                            
                                             </Button.Group>
