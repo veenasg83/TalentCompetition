@@ -64,7 +64,7 @@ export default class CreateJob extends React.Component {
         //var param = root.getAttribute('data-id');
         var param = this.props.match.params.id ? this.props.match.params.id : "";//workaround till we get Redux in to keep the page from breaking
         var copyJobParam = this.props.match.params.copyId ? this.props.match.params.copyId : "";
-
+        
         if (param != "" || copyJobParam != "") {
             var link = param != "" ? 'http://localhost:51689/listing/listing/GetJobByToEdit?id=' + param
                 : 'http://localhost:51689/listing/listing/GetJobForCopy?id=' + copyJobParam;

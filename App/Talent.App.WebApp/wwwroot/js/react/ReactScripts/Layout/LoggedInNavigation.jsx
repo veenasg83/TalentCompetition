@@ -135,6 +135,7 @@ export class LoggedInNavigation extends React.Component {
                 href: "/PostJob",
                 right: true
             }
+           
         ]
 
         let userType = this.props.role.toLowerCase()

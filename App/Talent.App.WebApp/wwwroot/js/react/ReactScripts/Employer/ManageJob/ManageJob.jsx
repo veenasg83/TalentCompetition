@@ -6,7 +6,9 @@ import { LoggedInNavigation } from '../../Layout/LoggedInNavigation.jsx';
 import { JobSummaryCard } from './JobSummaryCard.jsx';
 import { BodyWrapper, loaderData } from '../../Layout/BodyWrapper.jsx';
 import { Pagination, Icon, Dropdown, Checkbox, Accordion, Form, Segment, Card, Button, Label } from 'semantic-ui-react';
-
+import '../../style/talenttheme.css';
+import EditJob from './EditJob.jsx';
+import CreateJob from '../CreateJob/CreateJob.jsx';
 
 
 const sortOptions = [
@@ -57,7 +59,9 @@ export default class ManageJob extends React.Component {
             limit: 2,
             paginatedData: [],
             firstoffset: 0,
-            lastOffset: 2
+            lastOffset: 2,
+            showEditSection: false,
+            editId:0
         }
         this.loadData = this.loadData.bind(this);
         this.init = this.init.bind(this);
@@ -171,8 +175,7 @@ export default class ManageJob extends React.Component {
     }
 
     closeJob(id) {
-        var cookies = Cookies.get('talentAuthToken');
-        console.log("id",id);
+        var cookies = Cookies.get('talentAuthToken');    
         $.ajax({
             url: 'http://localhost:51689/listing/listing/closeJob',
             headers: {
@@ -194,10 +197,25 @@ export default class ManageJob extends React.Component {
         })     
     }
 
+    editJob(id) {
+        console.log("editcalled",id);
+        this.setState({
+            showEditSection: true,
+            editId:id
+        })
+    }
+
     
 
     render() {
-        const { loadJobs, paginatedData,limit } = this.state
+        return (
+            this.state.showEditSection ? this.renderEdit() : this.renderDisplay()
+        )
+    }
+
+    renderDisplay() {
+        const { loadJobs, paginatedData, limit } = this.state
+
         return (
             <BodyWrapper reload={this.init} loaderData={this.state.loaderData}>
 
@@ -239,7 +257,7 @@ export default class ManageJob extends React.Component {
                                             <Button negative floated='left' size='mini'>Expired</Button>
                                             <Button.Group compact floated='right'>
                                                     <Button icon='close' content = "Close" size='mini' basic color='blue'  onClick={()=>this.closeJob(item.id)}/>                                         
-                                                    <Button icon='edit' content= "Edit" size='mini' size='mini'basic color='blue'/>                                            
+                                                    <Button icon='edit' content="Edit" size='mini' size='mini' basic color='blue' onClick={()=>this.editJob(item.id)}/>                                            
                                                     <Button icon='copy' content="Copy" size='mini' size='mini' basic color='blue' />                                            
                                             </Button.Group>
                                             </div>
@@ -250,7 +268,7 @@ export default class ManageJob extends React.Component {
                         </Card.Group>
                         </div>
                 </div>
-                <div >
+                <div className = "page" >
                 <Pagination 
                     defaultActivePage={1} 
                     totalPages={Math.ceil(loadJobs.length/limit)}
@@ -261,4 +279,13 @@ export default class ManageJob extends React.Component {
             </BodyWrapper>
         )
     }
+
+    renderEdit() {
+        return (
+            <EditJob jobId={this.state.editId} />
+        )
+    }
+
+
+
 }
