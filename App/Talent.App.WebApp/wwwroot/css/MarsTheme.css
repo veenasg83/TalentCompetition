@@ -1451,6 +1451,10 @@ div.ReactTags__selected a.ReactTags__remove {
     max-height: 200px;
     min-height: 200px;
     overflow-y: hidden;
+   
+}
+.cardDisplay {
+    padding-bottom:1em;
 }
 
 .description.job-summary:hover {

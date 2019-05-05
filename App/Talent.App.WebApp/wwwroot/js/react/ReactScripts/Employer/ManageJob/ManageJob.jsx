@@ -6,7 +6,7 @@ import { LoggedInNavigation } from '../../Layout/LoggedInNavigation.jsx';
 import { JobSummaryCard } from './JobSummaryCard.jsx';
 import { BodyWrapper, loaderData } from '../../Layout/BodyWrapper.jsx';
 import { Pagination, Icon, Dropdown, Checkbox, Accordion, Form, Segment, Card, Button, Label } from 'semantic-ui-react';
-import '../../style/talenttheme.css';
+
 import EditJob from './EditJob.jsx';
 import CreateJob from '../CreateJob/CreateJob.jsx';
 
@@ -120,9 +120,7 @@ export default class ManageJob extends React.Component {
                     })
                     this.prepareTable(this.state.firstoffset, this.state.lastOffset);
                 }
-                console.log("ajax", res);
-                console.log("ajax", jobList);
-
+                
             }.bind(this),
             error: function (res) {
                 console.log(res.status);
@@ -169,8 +167,8 @@ export default class ManageJob extends React.Component {
         const firstIndex = lastIndex - this.state.limit;
         this.prepareTable(firstIndex, lastIndex);
 
-        console.log("inside", current);
-        console.log("inside", event.target.getAttribute("value"));
+       // console.log("inside", current);
+       // console.log("inside", event.target.getAttribute("value"));
 
     }
 
@@ -187,7 +185,7 @@ export default class ManageJob extends React.Component {
             contentType: "Application/json",
             dataType: "JSON",
             success: function (res) {
-
+                this.loadData();
                 console.log(res.messages);
             }.bind(this),
             error: function (res) {
@@ -215,15 +213,48 @@ export default class ManageJob extends React.Component {
 
     renderDisplay() {
         const { loadJobs, paginatedData, limit } = this.state
+        let tableData = null;
+        if (loadJobs.length == 0) {
+            tableData = <p>    No Jobs found </p>
+        }
+        else {
+            tableData =
+                paginatedData.map((item) =>             
+                            
+                    <Card>                       
+                        <Card.Content >
+                            <Card.Header>{item.title}</Card.Header>
+                            <Label as='a' color='black' ribbon='right'>
+                                <Icon className="user" />
+                                 0
+                            </Label>
+                            <Card.Meta>{item.location.city},{item.location.country}</Card.Meta>
+                            <Card.Description className="description job-summary"> {item.summary} </Card.Description>
+                         </Card.Content>                   
+                         <Card.Content extra className="cardContent">
+                            <div>
+                               <Button compact color='red'  size='mini'>Expired</Button>
+                               <Button.Group compact floated='right' size='mini'>
+                                    <Button icon='close'content="Close" basic color='blue' onClick={() => this.closeJob(item.id)} />
+                                    <Button icon='edit' content="Edit"  basic color='blue' onClick={() => this.editJob(item.id)} />
+                                    <Button icon='copy' content="Copy"  basic color='blue' />
+                               </Button.Group>
+                            </div>                               
+                         </Card.Content>                       
+                    </Card>                
+                                     
+                )
+        }
 
         return (
             <BodyWrapper reload={this.init} loaderData={this.state.loaderData}>
-
-                <div className="ui container">
+                <React.Fragment>  
+                    <div className="ui container">
+                        <h1> List of Jobs</h1>
                     <span>
                         <Icon className="filter" />
                         Filter:{' '}
-                        <Dropdown
+                        <Dropdown className = "cardDisplay"
                             inline
                             options={filterOptions}
                             defaultValue={filterOptions[0].value}
@@ -235,39 +266,12 @@ export default class ManageJob extends React.Component {
                             options={sortOptions}
                             defaultValue={sortOptions[0].value}
                         />
-                    </span>
-                    <div className = "cardGroup">
-                    <Card.Group>
-                        {paginatedData.map((item) =>
-                            <React.Fragment>
-                                    <Card>
-                                 
-                                        <Card.Content>   
-                                           
-                                            <Card.Header>{item.title}</Card.Header>
-                                            <Label as='a' color='black' ribbon='right'>
-                                                <Icon className="user" />
-                                                0
-                                            </Label>
-                                        <Card.Meta>{item.location.city},{item.location.country}</Card.Meta>
-                                  <Card.Description> {item.summary} </Card.Description>                                 
-                                </Card.Content>
-                                    <Card.Content extra>
-                                        <div>
-                                            <Button negative floated='left' size='mini'>Expired</Button>
-                                            <Button.Group compact floated='right'>
-                                                    <Button icon='close' content = "Close" size='mini' basic color='blue'  onClick={()=>this.closeJob(item.id)}/>                                         
-                                                    <Button icon='edit' content="Edit" size='mini' size='mini' basic color='blue' onClick={()=>this.editJob(item.id)}/>                                            
-                                                    <Button icon='copy' content="Copy" size='mini' size='mini' basic color='blue' />                                            
-                                            </Button.Group>
-                                            </div>
-                                </Card.Content>
-                                </Card>
-                            </React.Fragment>
-                        )}
-                        </Card.Group>
-                        </div>
+                    </span>                   
+                    <Card.Group>                      
+                       {tableData}                      
+                    </Card.Group>                       
                 </div>
+
                 <div className = "page" >
                 <Pagination 
                     defaultActivePage={1} 
@@ -275,9 +279,10 @@ export default class ManageJob extends React.Component {
                     onClick={(event, data) => this.handleChange(event)}
                     onPageChange={(event, data) => this.onPageChanged(event)}
                     />
-                </div>
+                    </div>
+                </React.Fragment>
             </BodyWrapper>
-        )
+            )
     }
 
     renderEdit() {

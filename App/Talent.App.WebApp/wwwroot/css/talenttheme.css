@@ -1,9 +1,19 @@
 ﻿
-.cardGroup {
-    height: 10em;
-    padding-left: 20em;
-}
+
 
 .page {
-    margin-left: 10em;
+  text-align:center;
+    padding-top:2em;
 }
+
+.cardGroup{
+    padding-top:1em;
+   
+}
+
+.content{ 
+  
+
+}
+
+
