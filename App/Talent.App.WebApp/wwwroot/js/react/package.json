@@ -16,7 +16,8 @@
     "style-loader": "^0.23.1"
   },
   "scripts": {
-    "build": "webpack"
+    "build": "webpack --config ./webpack.config.js --progress --colors",
+    "build:production": "SET NODE_ENV=production & npm run build"
   },
   "author": "MVP Studio",
   "license": "ISC",

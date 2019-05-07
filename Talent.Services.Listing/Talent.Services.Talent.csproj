@@ -12,10 +12,12 @@
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
     <AssemblyName>Talent.Services.Talent</AssemblyName>
     <RootNamespace>Talent.Services.Talent</RootNamespace>
+    <UserSecretsId>5dedeac9-ec83-4bb7-8ad8-55358c1877a4</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <Folder Include="Domain\Models\" />
+    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

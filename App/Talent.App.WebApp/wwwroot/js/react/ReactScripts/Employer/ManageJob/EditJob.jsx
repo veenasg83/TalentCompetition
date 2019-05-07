@@ -7,6 +7,7 @@ import { ChildSingleInput } from '../../Form/SingleInput.jsx'
 import { JobDescription } from '../CreateJob/JobDescription.jsx';
 import { JobSummary } from '../CreateJob/JobSummary.jsx';
 import { BodyWrapper, loaderData } from '../../Layout/BodyWrapper.jsx';
+import consts from '../../APIConstants.js';
 
 export default class EditJob extends React.Component {
     constructor(props) {
@@ -57,7 +58,7 @@ export default class EditJob extends React.Component {
         let param = this.state.jobData.id;
         var cookies = Cookies.get('talentAuthToken');
         $.ajax({
-            url: 'http://localhost:51689/listing/listing/GetJobByToEdit?id=' + param,
+            url: consts.talentAPIBaseUrl +'/listing/listing/GetJobByToEdit?id=' + param,
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'
@@ -87,7 +88,7 @@ export default class EditJob extends React.Component {
         console.log("date:", jobData.jobDetails.startDate);
         var cookies = Cookies.get('talentAuthToken');
         $.ajax({
-            url: 'http://localhost:51689/listing/listing/createUpdateJob',
+            url: consts.talentAPIBaseUrl +'/listing/listing/createUpdateJob',
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'

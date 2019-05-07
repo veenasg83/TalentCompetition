@@ -9,7 +9,7 @@ import { Pagination, Icon, Dropdown, Checkbox, Accordion, Form, Segment, Card, B
 
 import EditJob from './EditJob.jsx';
 import CreateJob from '../CreateJob/CreateJob.jsx';
-
+import consts from '../../APIConstants.js'
 
 const sortOptions = [
     {
@@ -92,7 +92,7 @@ export default class ManageJob extends React.Component {
         var cookies = Cookies.get('talentAuthToken');
         // your ajax call and other logic goes here
         $.ajax({
-            url: 'http://localhost:51689/listing/listing/GetSortedEmployerJobs',
+            url: consts.talentAPIBaseUrl +'/listing/listing/GetSortedEmployerJobs',
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'
@@ -175,7 +175,7 @@ export default class ManageJob extends React.Component {
     closeJob(id) {
         var cookies = Cookies.get('talentAuthToken');    
         $.ajax({
-            url: 'http://localhost:51689/listing/listing/closeJob',
+            url: consts.talentAPIBaseUrl +'/listing/listing/closeJob',
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'

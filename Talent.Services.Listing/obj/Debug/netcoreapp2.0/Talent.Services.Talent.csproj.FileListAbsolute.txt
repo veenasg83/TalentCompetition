@@ -59,3 +59,4 @@ D:\Veena\IndustryConnect\Practical\CompetitionTask\Talent.Services.Listing\obj\D
 D:\Veena\IndustryConnect\Practical\CompetitionTask\Talent.Services.Listing\obj\Debug\netcoreapp2.0\Talent.Services.Talent.csproj.CopyComplete
 D:\Veena\IndustryConnect\Practical\CompetitionTask\Talent.Services.Listing\obj\Debug\netcoreapp2.0\Talent.Services.Talent.dll
 D:\Veena\IndustryConnect\Practical\CompetitionTask\Talent.Services.Listing\obj\Debug\netcoreapp2.0\Talent.Services.Talent.pdb
+D:\Veena\IndustryConnect\Practical\CompetitionTask\Talent.Services.Listing\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs

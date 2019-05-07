@@ -8,6 +8,7 @@ import { IndividualDetailSection, CompanyDetailSection } from '../../Profile/Con
 import Skill from '../../Profile/Skill.jsx';
 import PhotoUpload from '../../Profile/PhotoUpload.jsx';
 import VideoUpload from '../../Profile/VideoUpload.jsx'
+import consts from '../../APIConstants.js'
 
 class ClientProfileModal extends React.Component {
     constructor(props) {
@@ -23,7 +24,7 @@ class ClientProfileModal extends React.Component {
         if (id != undefined) {
             var cookies = Cookies.get('talentAuthToken');
             $.ajax({
-                url: 'http://localhost:60290/profile/profile/getEmployerProfile?id=' + id + '&role=' + 'employer',
+                url: consts.profileAPIBaseUrl +'/profile/profile/getEmployerProfile?id=' + id + '&role=' + 'employer',
                 headers: {
                     'Authorization': 'Bearer ' + cookies,
                     'Content-Type': 'application/json'
@@ -51,7 +52,7 @@ class ClientProfileModal extends React.Component {
     saveData() {
         var cookies = Cookies.get('talentAuthToken');
         $.ajax({
-            url: 'http://localhost:60290/profile/profile/saveClientProfile',
+            url: consts.profileAPIBaseUrl +'/profile/profile/saveClientProfile',
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'

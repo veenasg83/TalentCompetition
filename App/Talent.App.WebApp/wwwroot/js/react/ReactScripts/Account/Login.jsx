@@ -6,6 +6,7 @@ import { userNavigation } from './UserNavigation.jsx'
 import { FormErrors } from '../Form/FormErrors.jsx'
 import Cookies from 'js-cookie'
 import { EmailVerification } from './EmailVerification.jsx';
+import consts from '../APIConstants.js'
 
 export default class LoginForm extends React.Component {
     constructor(props) {
@@ -81,7 +82,9 @@ export default class LoginForm extends React.Component {
     };
     login() {
         this.setState({ isLoading: true });
-
+        console.log("loginfunction");
+        console.log(consts);
+        console.log(consts.identityAPIBaseUrl + '/authentication/authentication/signin');
         var loginModel = {
             isRemember: this.state.isRemember,
             email: this.state.email,
@@ -89,12 +92,14 @@ export default class LoginForm extends React.Component {
         }
 
         $.ajax({
-            url: 'http://localhost:60998/authentication/authentication/signin',
+            url: consts.identityAPIBaseUrl+'/authentication/authentication/signin',
             type: 'POST',
             data: JSON.stringify(loginModel),
             contentType: 'application/json',
             dataType: 'json',
+            
             success: function (response) {
+                console.log("in ajax login");
                 if (response.isSuccess && response.isEmailVerified) {
                     Cookies.set('talentAuthToken', response.token.token)
                     window.location = userNavigation(response.token.userRole);
@@ -105,8 +110,10 @@ export default class LoginForm extends React.Component {
                 else if (response.isSuccess && !response.isEmailVerified) {
                     TalentUtil.notification.show(response.message, "error", null, null);
                     this.setState({ isEmailVerified: response.isEmailVerified })
+                    console.log("in ajax else if ");
                 }
                 else {
+                    console.log("in ajax error");
                     TalentUtil.notification.show(response.message, "error", null, null)
                     this.setState({ isLoading: false });
                 }

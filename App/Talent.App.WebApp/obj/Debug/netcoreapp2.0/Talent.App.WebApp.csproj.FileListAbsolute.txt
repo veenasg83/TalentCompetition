@@ -9,3 +9,4 @@ D:\Veena\IndustryConnect\Practical\CompetitionTask\App\Talent.App.WebApp\obj\Deb
 D:\Veena\IndustryConnect\Practical\CompetitionTask\App\Talent.App.WebApp\obj\Debug\netcoreapp2.0\Talent.App.WebApp.AssemblyInfo.cs
 D:\Veena\IndustryConnect\Practical\CompetitionTask\App\Talent.App.WebApp\obj\Debug\netcoreapp2.0\Talent.App.WebApp.dll
 D:\Veena\IndustryConnect\Practical\CompetitionTask\App\Talent.App.WebApp\obj\Debug\netcoreapp2.0\Talent.App.WebApp.pdb
+D:\Veena\IndustryConnect\Practical\CompetitionTask\App\Talent.App.WebApp\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs

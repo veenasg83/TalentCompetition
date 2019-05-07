@@ -1,6 +1,6 @@
 ﻿import React, { Component } from 'react'
 import VideoUpload from './VideoUpload.jsx'
-
+import consts from '../APIConstants.js'
 export class TalentVideoSection extends Component {
     constructor(props) {
         super(props)
@@ -49,7 +49,7 @@ export class TalentVideoSection extends Component {
             <VideoUpload
                 videoName={this.state.profileData.videoName}
                 updateProfileData={this.updateForComponentId}
-                saveVideoUrl={'http://localhost:60290/profile/profile/updateTalentVideo'}
+                saveVideoUrl={consts.profileAPIBaseUrl +'/profile/profile/updateTalentVideo'}
             />
         )
         uploaders.push(<VideoUpload videoName='' updateProfileData={this.updateForComponentId} />)

@@ -10,6 +10,7 @@ import AuthenticatingBanner from '../Layout/Banner/AuthenticatingBanner.jsx';
 import { LoggedInNavigation } from '../Layout/LoggedInNavigation.jsx';
 import { IndividualDetailSection, CompanyDetailSection } from './ContactDetail.jsx';
 import { BodyWrapper, loaderData } from '../Layout/BodyWrapper.jsx';
+import consts from '../APIConstants.js'
 
 export default class EmployeeProfile extends React.Component {
     constructor(props) {
@@ -52,7 +53,7 @@ export default class EmployeeProfile extends React.Component {
     loadData() {
         var cookies = Cookies.get('talentAuthToken');
         $.ajax({
-            url: 'http://localhost:60290/profile/profile/getEmployerProfile',
+            url: consts.profileAPIBaseUrl +'/profile/profile/getEmployerProfile',
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'
@@ -153,7 +154,7 @@ export default class EmployeeProfile extends React.Component {
 
         var cookies = Cookies.get('talentAuthToken');
         $.ajax({
-            url: 'http://localhost:60290/profile/profile/saveEmployerProfile',
+            url: consts.profileAPIBaseUrl +'/profile/profile/saveEmployerProfile',
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'

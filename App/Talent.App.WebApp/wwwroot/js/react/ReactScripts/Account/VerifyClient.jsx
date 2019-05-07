@@ -5,6 +5,7 @@ import { Container, Loader } from 'semantic-ui-react'
 import { SingleInput } from '../Form/SingleInput.jsx'
 import Cookies from 'js-cookie';
 import { userNavigation } from './UserNavigation.jsx'
+import consts from '../APIConstants.js'
 
 export default class VerifyClient extends React.Component {
     constructor(props) {
@@ -46,7 +47,7 @@ export default class VerifyClient extends React.Component {
         let data = {
             recruiterEmail, clientEmail, resetPasswordToken
         }
-        let url = `http://localhost:60998/authentication/authentication/verifyClientToken?recruiterEmail=${recruiterEmail}&clientEmail=${clientEmail}&resetPasswordToken=${resetPasswordToken}`;
+        let url = consts.identityAPIBaseUrl +`/authentication/authentication/verifyClientToken?recruiterEmail=${recruiterEmail}&clientEmail=${clientEmail}&resetPasswordToken=${resetPasswordToken}`;
         $.ajax({
             url: url,
             type: 'POST',
@@ -129,7 +130,7 @@ export default class VerifyClient extends React.Component {
     savePassword() {
         let { newPassword, recruiterEmail, clientEmail, resetPasswordToken } = this.state;
         
-        let resetUrl = `http://localhost:60998/authentication/authentication/validateInvitation?recruiterEmail=${recruiterEmail}&clientEmail=${clientEmail}&resetPasswordToken=${resetPasswordToken}`;
+        let resetUrl = consts.identityAPIBaseUrl +`identityAPIBaseUrl/authentication/authentication/validateInvitation?recruiterEmail=${recruiterEmail}&clientEmail=${clientEmail}&resetPasswordToken=${resetPasswordToken}`;
 
         $.ajax({
             url: resetUrl,

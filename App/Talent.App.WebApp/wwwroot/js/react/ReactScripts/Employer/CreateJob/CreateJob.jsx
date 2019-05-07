@@ -12,6 +12,7 @@ import { ChildSingleInput } from '../../Form/SingleInput.jsx'
 import { JobDescription } from './JobDescription.jsx';
 import { JobSummary } from './JobSummary.jsx';
 import { BodyWrapper, loaderData } from '../../Layout/BodyWrapper.jsx';
+import consts from '../../APIConstants.js'
 
 export default class CreateJob extends React.Component {
     constructor(props) {
@@ -66,8 +67,8 @@ export default class CreateJob extends React.Component {
         var copyJobParam = this.props.match.params.copyId ? this.props.match.params.copyId : "";
         
         if (param != "" || copyJobParam != "") {
-            var link = param != "" ? 'http://localhost:51689/listing/listing/GetJobByToEdit?id=' + param
-                : 'http://localhost:51689/listing/listing/GetJobForCopy?id=' + copyJobParam;
+            var link = param != "" ? consts.talentAPIBaseUrl +'/listing/listing/GetJobByToEdit?id=' + param
+                : consts.talentAPIBaseUrl +'/listing/listing/GetJobForCopy?id=' + copyJobParam;
             var cookies = Cookies.get('talentAuthToken');
             $.ajax({
                 url: link,
@@ -100,7 +101,7 @@ export default class CreateJob extends React.Component {
         console.log("date:", jobData.jobDetails.startDate);
         var cookies = Cookies.get('talentAuthToken');   
         $.ajax({
-            url: 'http://localhost:51689/listing/listing/createUpdateJob',
+            url: consts.talentAPIBaseUrl +'/listing/listing/createUpdateJob',
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'
