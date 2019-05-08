@@ -235,7 +235,7 @@ export default class ManageJob extends React.Component {
                             <div>
                                <Button compact color='red'  size='mini'>Expired</Button>
                                <Button.Group compact floated='right' size='mini'>
-                                    <Button icon='close'content="Close" basic color='blue' onClick={() => this.closeJob(item.id)} />
+                                    <Button icon='ban'content="Close" basic color='blue' onClick={() => this.closeJob(item.id)} />
                                     <Button icon='edit' content="Edit"  basic color='blue' onClick={() => this.editJob(item.id)} />
                                     <Button icon='copy' content="Copy"  basic color='blue' />
                                </Button.Group>
