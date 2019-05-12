@@ -4,8 +4,9 @@ let webpack = require('webpack');
 var talentApiHost, identityApiHost, profileApiHost, mode;
 
 setUpApI = function () {  
-    console.log("env", process.env.NODE_ENV );
-    switch ( process.env.NODE_ENV.trim() ) {
+    let env = process.env.NODE_ENV ? process.env.NODE_ENV.trim() : 'dev';
+   
+    switch ( env) {
         case 'production':
             talentApiHost = "'https://talentcompetition.azurewebsites.net/talent'";
             identityApiHost = "'https://talentcompetition.azurewebsites.net/identity'";
@@ -20,6 +21,7 @@ setUpApI = function () {
             mode = 'development';
             break;
     }
+   
 };
 setUpApI();
 

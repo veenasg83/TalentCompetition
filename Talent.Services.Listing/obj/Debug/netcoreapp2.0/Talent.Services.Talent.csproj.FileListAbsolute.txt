@@ -54,9 +54,9 @@ D:\Veena\IndustryConnect\Practical\CompetitionTask\Talent.Services.Listing\bin\D
 D:\Veena\IndustryConnect\Practical\CompetitionTask\Talent.Services.Listing\bin\Debug\netcoreapp2.0\Talent.Services.Profile.pdb
 D:\Veena\IndustryConnect\Practical\CompetitionTask\Talent.Services.Listing\obj\Debug\netcoreapp2.0\Talent.Services.Talent.csprojAssemblyReference.cache
 D:\Veena\IndustryConnect\Practical\CompetitionTask\Talent.Services.Listing\obj\Debug\netcoreapp2.0\Talent.Services.Talent.csproj.CoreCompileInputs.cache
+D:\Veena\IndustryConnect\Practical\CompetitionTask\Talent.Services.Listing\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
 D:\Veena\IndustryConnect\Practical\CompetitionTask\Talent.Services.Listing\obj\Debug\netcoreapp2.0\Talent.Services.Talent.AssemblyInfoInputs.cache
 D:\Veena\IndustryConnect\Practical\CompetitionTask\Talent.Services.Listing\obj\Debug\netcoreapp2.0\Talent.Services.Talent.AssemblyInfo.cs
 D:\Veena\IndustryConnect\Practical\CompetitionTask\Talent.Services.Listing\obj\Debug\netcoreapp2.0\Talent.Services.Talent.csproj.CopyComplete
 D:\Veena\IndustryConnect\Practical\CompetitionTask\Talent.Services.Listing\obj\Debug\netcoreapp2.0\Talent.Services.Talent.dll
 D:\Veena\IndustryConnect\Practical\CompetitionTask\Talent.Services.Listing\obj\Debug\netcoreapp2.0\Talent.Services.Talent.pdb
-D:\Veena\IndustryConnect\Practical\CompetitionTask\Talent.Services.Listing\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs

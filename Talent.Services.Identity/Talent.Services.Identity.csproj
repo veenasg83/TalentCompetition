@@ -17,6 +17,7 @@
     <UserSecretsId>40365600-546a-4f4b-8c2c-ba31a31278ad</UserSecretsId>
 </PropertyGroup>
   <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
